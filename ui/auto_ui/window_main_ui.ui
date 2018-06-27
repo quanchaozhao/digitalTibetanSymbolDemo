@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Window_Main</class>
+ <widget class="QMainWindow" name="Window_Main">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>892</width>
+    <height>659</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>892</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_file">
+    <property name="title">
+     <string>文件</string>
+    </property>
+    <addaction name="action_open"/>
+    <addaction name="action_close"/>
+    <addaction name="separator"/>
+    <addaction name="action_exit"/>
+   </widget>
+   <widget class="QMenu" name="menu_pre_process">
+    <property name="title">
+     <string>预处理</string>
+    </property>
+    <addaction name="action_remove_noise"/>
+    <addaction name="action_text_extract"/>
+   </widget>
+   <widget class="QMenu" name="menu_help">
+    <property name="title">
+     <string>帮助</string>
+    </property>
+    <addaction name="action_about"/>
+   </widget>
+   <widget class="QMenu" name="menu_line_process">
+    <property name="title">
+     <string>文本行切分</string>
+    </property>
+    <addaction name="action_line_extract"/>
+    <addaction name="action_cut_selected_line"/>
+    <addaction name="action_del_selected_line"/>
+    <addaction name="action_merged_selected_line"/>
+   </widget>
+   <widget class="QMenu" name="menu_char_recognize">
+    <property name="title">
+     <string>字丁切分</string>
+    </property>
+    <addaction name="action_char_extract"/>
+    <addaction name="action_del_selected_char"/>
+    <addaction name="action_merge_selected_char"/>
+    <addaction name="action_cut_selected_char"/>
+   </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>工具</string>
+    </property>
+    <addaction name="action_char_export_2_img"/>
+    <addaction name="action_char_export_2_text"/>
+   </widget>
+   <widget class="QMenu" name="menu_recognize">
+    <property name="title">
+     <string>字丁识别</string>
+    </property>
+    <addaction name="action_recognize_chars"/>
+   </widget>
+   <addaction name="menu_file"/>
+   <addaction name="menu_pre_process"/>
+   <addaction name="menu_line_process"/>
+   <addaction name="menu_char_recognize"/>
+   <addaction name="menu_recognize"/>
+   <addaction name="menu"/>
+   <addaction name="menu_help"/>
+  </widget>
+  <action name="action_open">
+   <property name="text">
+    <string>打开</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="action_close">
+   <property name="text">
+    <string>关闭</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="action_exit">
+   <property name="text">
+    <string>退出</string>
+   </property>
+  </action>
+  <action name="action_remove_noise">
+   <property name="text">
+    <string>去除噪点</string>
+   </property>
+  </action>
+  <action name="action_text_extract">
+   <property name="text">
+    <string>检测文字区域</string>
+   </property>
+  </action>
+  <action name="action_line_extract">
+   <property name="text">
+    <string>文本行切分</string>
+   </property>
+  </action>
+  <action name="action_tilt_correction">
+   <property name="text">
+    <string>倾斜矫正</string>
+   </property>
+  </action>
+  <action name="action_about">
+   <property name="text">
+    <string>关于</string>
+   </property>
+  </action>
+  <action name="action_char_extract">
+   <property name="text">
+    <string>字丁切分</string>
+   </property>
+  </action>
+  <action name="actionDafsd">
+   <property name="text">
+    <string>dafsd</string>
+   </property>
+  </action>
+  <action name="action_char_export_2_img">
+   <property name="text">
+    <string>导出已切分的字丁图片</string>
+   </property>
+  </action>
+  <action name="action_char_export_2_text">
+   <property name="text">
+    <string>导出识别字丁到文本</string>
+   </property>
+  </action>
+  <action name="action_recognize_chars">
+   <property name="text">
+    <string>识别已切分的字丁</string>
+   </property>
+  </action>
+  <action name="action_del_selected_line">
+   <property name="text">
+    <string>删除选中的文本行</string>
+   </property>
+  </action>
+  <action name="action_merged_selected_line">
+   <property name="text">
+    <string>合并选中的文本行</string>
+   </property>
+  </action>
+  <action name="action_del_selected_char">
+   <property name="text">
+    <string>删除选中的字丁</string>
+   </property>
+  </action>
+  <action name="action_merge_selected_char">
+   <property name="text">
+    <string>合并选中的字丁</string>
+   </property>
+  </action>
+  <action name="action_cut_selected_char">
+   <property name="text">
+    <string>切分选中的字丁</string>
+   </property>
+  </action>
+  <action name="action_cut_selected_line">
+   <property name="text">
+    <string>切分选中的文本行</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

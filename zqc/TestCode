@@ -1,0 +1,39 @@
+# coding:utf-8
+import pygame
+import os
+# path = r'C:\Users\Zqc\Desktop\character\Test'
+# write_file = open('rr.txt', 'a', encoding='utf-8')
+# with open('..\Tibetan_index\\Tibetan_symbol.txt','r') as file_read:
+#     file = file_read.readline().replace('\n','')
+#     while not (file == ''):
+#         pygame.init()
+#         pygame.font.init()
+#         my_font = pygame.font.SysFont('IPAPANNEW', 40)
+#         text_surface = my_font.render('\uf50c', True, (0, 0, 0), (255, 255, 255))
+#         # pygame.init()
+#         # print(pygame.font.get_fonts())
+#         write_file.write('\uf50c')
+#         pygame.image.save(text_surface, os.path.join(path,file + ".png"))
+#         file = file_read.readline().replace('\n','')
+# write_file.flush()
+# write_file.close()
+# with open('..\Tibetan_index\\words_Titan.txt','r') as file_read:
+#     file = file_read.readline().replace('\n','')
+#     while not (file == ''):
+#         pygame.init()
+#         pygame.font.init()
+#         my_font = pygame.font.SysFont('ག', 40)
+#         text_surface = my_font.render(chr(int(file,16)), True, (0, 0, 0), (255, 255, 255))
+#         # pygame.init()
+#         # print(pygame.font.get_fonts())
+#         pygame.image.save(text_surface, os.path.join(path,file + ".png"))
+#         file = file_read.readline().replace('\n','')
+
+import numpy as np
+
+s = np.asarray(np.ones((1,5)))
+
+t = np.insert(s[0],1,3,0)
+s = [1,2,3,4]
+s.insert(1,4)
+print(s)
