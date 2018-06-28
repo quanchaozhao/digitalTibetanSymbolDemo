@@ -41,7 +41,7 @@ isSave = True
 tem_path = r'./dd'
 
 # 设定是否是模糊粘连字符
-isTouching = True
+isTouching = False
 # endregion
 
 # region function: 获取图像
@@ -175,7 +175,6 @@ def alter_num(nums):
         elif(not flag) and (nums[i] > 5):
             flag = True
     return nums
-# d
 # region function: 文字切分
 def char_extract(possessing_img,line_position_array):
     # 传入的数据是经过切割后的文本行
@@ -188,6 +187,7 @@ def char_extract(possessing_img,line_position_array):
         v_profile = np.sum(np.where(line_img >= 0.99, 0, 1), axis=0)
         AREA = 10
         MAX = 0
+
         if(isTouching):
             v_profile = alter_num(v_profile)
             AREA = 20
@@ -195,7 +195,10 @@ def char_extract(possessing_img,line_position_array):
         # v_profile = np.where(v_profile > 5, v_profile, 0)
         v_ranges = get_line_range(v_profile, isTouching)
         if len(v_ranges) == 1:
-            char_position_arr.append([[line_start_row,line_start_row,line_start_row,line_start_row]])
+            tem = []
+            tem.append([0,line_end_row - line_start_row,0,v_ranges[0][1] - v_ranges[0][0]])
+            # tem.append([0,0,0,0])
+            char_position_arr.append(tem)
             continue
         char_line_arr = []
         v_arr = np.asarray(v_ranges)

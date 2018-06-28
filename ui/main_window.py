@@ -452,7 +452,9 @@ class Main_Window(QMainWindow, Ui_Window_Main):
         if self.processing_stage == 2:
             if self.show_img is None or self.text_line_position_array is None:
                 return
+
             char_position_arr = char_extract(self.processing_img, self.text_line_position_array)
+
             self.char_position_arr = char_position_arr
             self.show_char_image_on_widget()
             self.processing_stage = 3
@@ -720,6 +722,7 @@ class Main_Window(QMainWindow, Ui_Window_Main):
                         label.setFont(label_font)
                         label.setText(chr(int(reg_char[0], 16)))
                         label.name = str(reg_char[0])
+                        label.leacode = self.leaCode
                         label.char_id = i, j
                         label.setGeometry(QRect(min_col + 2, 30, 30, 30))
                         label_list.append(label)
@@ -739,36 +742,37 @@ class Main_Window(QMainWindow, Ui_Window_Main):
 
     # endregion
 
+    # TODO 删除由图片产生的响应
     # region function:char选中识别的操作
-    def on_char_recog_pick(self, event):
-        if event.mouseevent.button == 1:
-            try:
-                rec = event.artist
-                line_index, char_index = rec.char_index
-                start_row, end_row, start_col, end_col = self.char_position_arr[line_index][char_index]
-                img = self.text_line_imgs[line_index][start_row:end_row, start_col:end_col]
-                txt_label = self.label_lists[line_index][char_index]
-                rows, cols = img.shape
-                # print(txt_label.name)
-                if chr(int(txt_label.name,16)) in self.leaCode:
-                    message = str(txt_label.name)
-                else:
-                    message = str(txt_label.text())
-                char_edit_dialog = Char_Edit(self, img, message)
-
-                # char_edit_dialog = Char_Edit(self, img, chr(int(txt_label.name,16)))
-
-                char_edit_dialog.setWindowTitle("修改识别错误的字丁")
-                ret_message = char_edit_dialog.exec_()
-                if ret_message == 1:
-                    modified_str = char_edit_dialog.textEdit.toPlainText()
-                    if len(modified_str) > 0:
-                        txt_label.setText(modified_str)
-
-            except Exception as e:
-                print(e)
-
-    # endregion
+    # def on_char_recog_pick(self, event):
+    #     if event.mouseevent.button == 1:
+    #         try:
+    #             rec = event.artist
+    #             line_index, char_index = rec.char_index
+    #             start_row, end_row, start_col, end_col = self.char_position_arr[line_index][char_index]
+    #             img = self.text_line_imgs[line_index][start_row:end_row, start_col:end_col]
+    #             txt_label = self.label_lists[line_index][char_index]
+    #             rows, cols = img.shape
+    #             # print(txt_label.name)
+    #             if chr(int(txt_label.name,16)) in self.leaCode:
+    #                 message = str(txt_label.name)
+    #             else:
+    #                 message = str(txt_label.text())
+    #             char_edit_dialog = Char_Edit(self, img, message)
+    #
+    #             # char_edit_dialog = Char_Edit(self, img, chr(int(txt_label.name,16)))
+    #
+    #             char_edit_dialog.setWindowTitle("修改识别错误的字丁")
+    #             ret_message = char_edit_dialog.exec_()
+    #             if ret_message == 1:
+    #                 modified_str = char_edit_dialog.textEdit.toPlainText()
+    #                 if len(modified_str) > 0:
+    #                     txt_label.setText(modified_str)
+    #
+    #         except Exception as e:
+    #             print(e)
+    #
+    # # endregion
 
     # region function:关于
     def action_about_triggered(self):

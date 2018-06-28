@@ -7,6 +7,11 @@ import numpy as np
 from skimage import transform, io
 from Tibetan_index.Demo_Test_Character_64 import get_image
 
+def get_filter_img(img):
+    row,col = img.shape
+    profile = np.sum(img,axis=1)
+    start, end = np.where(profile < float(col))[0][0], np.where(profile < float(col))[0][-1]
+    return img[start:end+1, :]
 def get_string_by_img(imgs, words_text='Tibetan_index\\Tibetan_symbol.txt', model=None):
     data = []
     for img in imgs:
@@ -19,6 +24,7 @@ def get_string_by_img(imgs, words_text='Tibetan_index\\Tibetan_symbol.txt', mode
         # plt.show
         # img = np.where(get_image(img) > 240, 255,0).astype(np.uint8)
         # img = transform.resize(img / 255,(64,32))
+        img = get_filter_img(img)
         img = transform.resize(img, (64, 32))
         data.append(img)
     data = np.asarray(data)

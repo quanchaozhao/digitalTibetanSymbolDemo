@@ -16,22 +16,13 @@ class Char_Edit(QDialog,Ui_Char_Edit_Dialog):
         self.setupUi(self)
         self.buttonBox.button(QDialogButtonBox.Ok).setText(u"修改")
         self.buttonBox.button(QDialogButtonBox.Cancel).setText(u"取消")
-        # self.textEdit.setFontFamily("IPAPANNEW")
         self.textEdit.setFontPointSize(36)
         self.textEdit.setLineWrapMode(QTextEdit.NoWrap)
         self.textEdit.setFontFamily("IPAPANNEW")
-        if len(text) > 1:
-            text = chr(int(text,16))
+        # self.parent().leacode保存的是ipapannew不能显示的Unicode编码
+        # print(self.parent().leacode)
+        if text in self.parent().leacode:
             self.textEdit.setFontFamily("IeaUnicode")
-        # print(parent.name)
-        # print(len(text))
-        try:
-            if (len(text) == 1) and hasattr(parent, "name"):
-                # print("TTTTTTTTTTT")
-                text = chr(int(parent.name, 16))
-                self.textEdit.setFontFamily("IeaUnicode")
-        except AttributeError as e:
-            print(e)
         self.textEdit.setText(text)
         self.textEdit.setAlignment(Qt.AlignCenter)
         if show_img is not None:
